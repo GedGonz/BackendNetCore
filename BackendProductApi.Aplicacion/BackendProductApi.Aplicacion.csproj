@@ -6,12 +6,15 @@
 
   <ItemGroup>
     <Folder Include="Contratos\" />
-    <Folder Include="Maper\" />
     <Folder Include="Servicios\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BackendProductApi.Dominio\BackendProductApi.Dominio.csproj" />
   </ItemGroup>
 
 </Project>
