@@ -24,6 +24,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BackendProductApi.Aplicacion\BackendProductApi.Aplicacion.csproj" />
+    <ProjectReference Include="..\BackendProductApi.Infraestructura\BackendProductApi.Infraestructura.csproj" />
+    <ProjectReference Include="..\BackendProductApi.IoC\BackendProductApi.IoC.csproj" />
   </ItemGroup>
 
 </Project>

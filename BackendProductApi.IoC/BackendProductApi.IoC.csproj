@@ -8,4 +8,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BackendProductApi.Aplicacion\BackendProductApi.Aplicacion.csproj" />
+    <ProjectReference Include="..\BackendProductApi.Dominio\BackendProductApi.Dominio.csproj" />
+    <ProjectReference Include="..\BackendProductApi.Infraestructura\BackendProductApi.Infraestructura.csproj" />
+  </ItemGroup>
+
 </Project>

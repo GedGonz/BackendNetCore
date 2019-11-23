@@ -1,11 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using BackendProductApi.Infraestructura.Contexto;
+using BackendProductApi.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,7 +30,16 @@ namespace BackendProductApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            //services.AddControllers();
+
+
+            services.AddDbContext<ProductoContexto>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("ProductoDB")));
+
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddAutoMapper(typeof(Startup));
+            ContainerIoC.Servicios(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
