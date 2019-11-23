@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using BackendProductApi.Aplicacion.Maper;
 using BackendProductApi.Infraestructura.Contexto;
 using BackendProductApi.IoC;
 using Microsoft.AspNetCore.Builder;
@@ -36,10 +37,12 @@ namespace BackendProductApi
             services.AddDbContext<ProductoContexto>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("ProductoDB")));
 
+            services.AddAutoMapper(typeof(MappingProfile));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-            services.AddAutoMapper(typeof(Startup));
+
             ContainerIoC.Servicios(services);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
