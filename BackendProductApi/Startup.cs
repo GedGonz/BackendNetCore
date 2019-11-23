@@ -42,7 +42,12 @@ namespace BackendProductApi
 
             ContainerIoC.Servicios(services);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-            
+
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.WithOrigins("http://localhost:4200/"));
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,7 +64,7 @@ namespace BackendProductApi
 
             app.UseAuthorization();
 
-            app.UseCors();
+            app.UseCors(options => options.AllowAnyOrigin());
 
             app.UseEndpoints(endpoints =>
             {
