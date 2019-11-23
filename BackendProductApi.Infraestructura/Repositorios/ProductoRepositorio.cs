@@ -17,19 +17,32 @@ namespace BackendProductApi.Infraestructura.Repositorio
             this.productocontexto = productocontexto;
         }
 
-        public Task actualizarProducto(Producto producto)
+        public async Task actualizarProducto(Producto producto)
         {
-            throw new NotImplementedException();
+            var _producto = await obtenerProducto(producto.ProductoId);
+
+            _producto.Nombre = producto.Nombre;
+            _producto.Descripcion = producto.Descripcion;
+            _producto.Categoria = producto.Categoria;
+            _producto.Precio = producto.Precio;
+            _producto.Imagen = producto.Imagen;
+
+            productocontexto.Update(_producto);
+
+            productocontexto.SaveChanges();
         }
 
-        public Task eliminarProducto(int id)
+        public async  Task eliminarProducto(int id)
         {
-            throw new NotImplementedException();
+            var producto = await obtenerProducto(id);
+            productocontexto.Remove(producto);
+            productocontexto.SaveChanges();
         }
 
-        public Task guardarProducto(Producto producto)
+        public async Task guardarProducto(Producto producto)
         {
-            throw new NotImplementedException();
+            await productocontexto.AddAsync(producto);
+            productocontexto.SaveChanges();
         }
 
         public async Task<List<Producto>> obtenerListProducto()
@@ -44,9 +57,9 @@ namespace BackendProductApi.Infraestructura.Repositorio
 
         }
 
-        public Task<Producto> obtenerProducto(int id)
+        public async Task<Producto> obtenerProducto(int id)
         {
-            throw new NotImplementedException();
+            return await productocontexto.Producto.FindAsync(id);
         }
     }
 }

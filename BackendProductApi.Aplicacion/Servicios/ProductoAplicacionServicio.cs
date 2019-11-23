@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BackendProductApi.Aplicacion.Contratos;
 using BackendProductApi.Aplicacion.EntidadesDto;
+using BackendProductApi.Dominio.Entidades;
 using BackendProductApi.Dominio.Servicio;
 using System;
 using System.Collections.Generic;
@@ -18,19 +19,25 @@ namespace BackendProductApi.Aplicacion.Servicios
             this.productoDominioServicio = productoDominioServicio;
             this._mapper = _mapper;
         }
-        public Task actualizarProducto(ProductoDto producto)
+        public async Task actualizarProducto(ProductoDto productodto)
         {
-            throw new NotImplementedException();
+            var _producto = _mapper.Map<Producto>(productodto);
+
+            await productoDominioServicio.actualizarProducto(_producto);
+
         }
 
-        public Task eliminarProducto(int id)
+        public async Task eliminarProducto(int id)
         {
-            throw new NotImplementedException();
+
+            await productoDominioServicio.eliminarProducto(id);
         }
 
-        public Task guardarProducto(ProductoDto producto)
+        public async Task guardarProducto(ProductoDto productodto)
         {
-            throw new NotImplementedException();
+            var _producto = _mapper.Map<Producto>(productodto);
+
+            await productoDominioServicio.guardarProducto(_producto);
         }
 
         public async Task<List<ProductoDto>> obtenerListProducto()
@@ -41,9 +48,13 @@ namespace BackendProductApi.Aplicacion.Servicios
             return productosdto;
         }
 
-        public Task<ProductoDto> obtenerProducto(int id)
+        public async Task<ProductoDto> obtenerProducto(int id)
         {
-            throw new NotImplementedException();
+
+            var produto=  await productoDominioServicio.obtenerProducto(id);
+            var productosdto = _mapper.Map<ProductoDto>(produto);
+
+            return productosdto;
         }
     }
 }

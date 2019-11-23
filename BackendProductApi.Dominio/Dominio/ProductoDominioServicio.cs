@@ -16,19 +16,19 @@ namespace BackendProductApi.Dominio.Dominio
         {
             this.productoRepositorio = productoRepositorio;
         }
-        public Task actualizarProducto(Producto producto)
+        public async Task actualizarProducto(Producto producto)
         {
-            throw new NotImplementedException();
+            await productoRepositorio.actualizarProducto(producto);
         }
 
-        public Task eliminarProducto(int id)
+        public async Task eliminarProducto(int id)
         {
-            throw new NotImplementedException();
+            await productoRepositorio.eliminarProducto(id);
         }
 
-        public Task guardarProducto(Producto producto)
+        public async Task guardarProducto(Producto producto)
         {
-            throw new NotImplementedException();
+            await productoRepositorio.guardarProducto(producto);
         }
 
         public async Task<List<Producto>> obtenerListProducto()
@@ -36,9 +36,9 @@ namespace BackendProductApi.Dominio.Dominio
             return await productoRepositorio.obtenerListProducto();
         }
 
-        public Task<Producto> obtenerProducto(int id)
+        public async Task<Producto> obtenerProducto(int id)
         {
-            throw new NotImplementedException();
+            return await productoRepositorio.obtenerProducto(id);
         }
     }
 }
