@@ -43,9 +43,19 @@ namespace BackendProductApi
             ContainerIoC.Servicios(services);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
-            services.AddCors(c =>
+            //services.AddCors(c =>
+            //{
+            //    c.AddPolicy("AllowOrigin", options => options.WithOrigins("http://localhost:4200/"));
+            //    c.AddPolicy("AllowMethod", options => options.AllowAnyMethod());
+            //});
+
+            services.AddCors(options =>
             {
-                c.AddPolicy("AllowOrigin", options => options.WithOrigins("http://localhost:4200/"));
+                options.AddPolicy("CorsPolicy",
+                      builder => builder.WithOrigins("http://localhost:4200")
+                      .AllowAnyMethod()
+                      .AllowAnyHeader()
+                      .AllowCredentials());
             });
 
         }
@@ -64,7 +74,9 @@ namespace BackendProductApi
 
             app.UseAuthorization();
 
-            app.UseCors(options => options.AllowAnyOrigin());
+;           app.UseCors("CorsPolicy");
+
+
 
             app.UseEndpoints(endpoints =>
             {
