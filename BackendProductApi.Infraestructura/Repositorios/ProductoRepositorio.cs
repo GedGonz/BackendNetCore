@@ -19,7 +19,7 @@ namespace BackendProductApi.Infraestructura.Repositorio
 
         public async Task actualizarProducto(Producto producto)
         {
-            var _producto = await obtenerProducto(producto.ProductoId);
+            var _producto = await obtenerProducto(producto._Id);
             if (_producto!=null) 
             {
                 _producto.Nombre = producto.Nombre;

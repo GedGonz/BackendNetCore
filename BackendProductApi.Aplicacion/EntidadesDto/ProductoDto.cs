@@ -6,7 +6,7 @@ namespace BackendProductApi.Aplicacion.EntidadesDto
 {
     public class ProductoDto
     {
-        public int ProductoId { get; set; }
+        public int _id { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public string Precio { get; set; }

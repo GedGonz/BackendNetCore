@@ -12,7 +12,7 @@ namespace BackendProductApi.Aplicacion.Maper
         public MappingProfile()
         {
             CreateMap<Producto, ProductoDto>()
-            .ForMember(x=>x.ProductoId, ops=>ops.MapFrom(x=>x.ProductoId))
+            .ForMember(x=>x._id, ops=>ops.MapFrom(x=>x._Id))
             .ForMember(x => x.Nombre, ops => ops.MapFrom(x => x.Nombre))
             .ForMember(x => x.Descripcion, ops => ops.MapFrom(x => x.Descripcion))
             .ForMember(x => x.Categoria, ops => ops.MapFrom(x => x.Categoria))
