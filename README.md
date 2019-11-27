@@ -1,4 +1,4 @@
-# BackendProducto
+# BackendNetCore
 Api en Net Core para la el CRUD de tabla producto
 
 Se creo un proyecto con arquitecura orientada a dominio con inversion de dependencias.
